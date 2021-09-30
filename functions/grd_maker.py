@@ -56,7 +56,7 @@ def xyz_to_grd():
                 for d in range(0, data_size - 1):
                         mat.loc[data.Y.iloc[d], data.X.iloc[d]] = data.Z.iloc[d]
 
-                mat = mat.fillna(-99999)  # nan values
+                mat = mat.fillna(99999)  # nan values
                 print("Filled matrix: ", mat)
 
                 # Body of the .grd
