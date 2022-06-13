@@ -1,5 +1,5 @@
 # Useful functions 
-This is a set of useful functions developed by [frbione](https://github.com/frbione) in order to automatize some tasks during his PhD thesis development.<br>
+This is a set of useful functions developed by [frbione](https://github.com/frbione) in order to automate some tasks during his PhD thesis development.<br>
 
     
 ### **bathy_extractor** 
