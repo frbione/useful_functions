@@ -48,3 +48,4 @@ def extract_from_tif():
 
 
 
+extract_from_tif()

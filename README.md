@@ -2,11 +2,11 @@
 This is a set of useful functions developed by [frbione](https://github.com/frbione) in order to automatize some tasks during his PhD thesis development.<br>
 
     
-###**bathy_extractor** 
-####extract_from_tif
+### **bathy_extractor** 
+#### extract_from_tif
 
 This function can sample Z-values from paleobathymetric maps (rasters), based on time-varying point coordinates,
-which are input from .csv points files. The rasters + points set derives from plate tectonics cinematic models, such as [GPlates](https://www.gplates.org/) or [pyGplates](https://www.gplates.org/docs/pygplates/).
+which are input from .csv points files. The rasters + points set derives from plate tectonics kinematic models, such as [GPlates](https://www.gplates.org/) or [pyGplates](https://www.gplates.org/docs/pygplates/).
 <br>
 
 **Important instructions** <br>
@@ -26,8 +26,8 @@ PS: It is important that both the rasters + points set had been created using th
 PS2: It is **not necessary** to have **all** the rasters-equivalent ages in each point or vice-versa
 
 <br></br>
-###**grd_maker** 
-####xyz_to_grd
+### **grd_maker** 
+#### xyz_to_grd
 
 
 This function can convert tabular XYZ data from .txt or .csv files to grid text file format (.grd). Example [here](http://surferhelp.goldensoftware.com/topics/ascii_grid_file_format.htm).
