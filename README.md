@@ -33,7 +33,7 @@ PS2: It is **not necessary** to have **all** the rasters-equivalent ages in each
 This function can convert tabular XYZ data from .txt or .csv files to grid text file format (.grd). Example [here](http://surferhelp.goldensoftware.com/topics/ascii_grid_file_format.htm).
 <br>
 
-** Important instructions** <br>
+**Important instructions** <br>
 XYZ files:
 - Can be in .txt or .csv formats
 - Must be tab '\t' separated, but this can be changed in the original function for comma-separated files<br>
