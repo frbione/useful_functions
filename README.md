@@ -14,16 +14,16 @@ Raster files:
 - Can be in .tif or .grd formats
 - Must be named according to the corresponding age. e.g., for 100 Ma: 100.tif <br>
 
-Point files:
+Point coordinates:
 
 - Must be in .csv format
 - Each .csv file must correspond to a unique well/point with a time-varying location
 - Each .csv file must be named according to the well/point name. e.g., well_X.csv | X.csv | etc.
 - Each .csv file must contain at least 3 columns: 'Time (Ma)' | 'Lat' | 'Lon' 
-- The column 'Time (Ma)' must contain age values correspondent to the raster paleomaps' ages. 
+- The column 'Time (Ma)' will be used to associate the correspondent coordinates to the raster of the same age 
 
-PS: It is important that both the rasters + points set had been created using the same plate rotation model.<br>
-PS2: It is **not necessary** to have **all** the rasters-equivalent ages in each point or vice-versa
+PS: It is extremely recommended that both rasters and sampling points had been created using the same plate rotation model.<br>
+PS2: It is **not necessary** to have **all** the rasters-equivalent ages in each point or vice-versa.
 
 <br></br>
 ###**grd_maker** 
