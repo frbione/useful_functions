@@ -78,7 +78,3 @@ def z_from_tifs():
     return print(f'Process Finished. Files were saved to {outPath} ')
 
 z_from_tifs()
-
-
-
-extract_from_tif()
