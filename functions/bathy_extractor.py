@@ -7,24 +7,29 @@ import rasterio
 
 def z_from_tifs():
     '''
-    This function samples Z-values from rasters, based on time-varying point coordinates.
+    This function samples Z-values from rasters, based on
+    time-varying point coordinates.
     Point coordinates are input from .csv files.
 
     Important instructions
     Raster files:
 
     Can be in .tif or .grd (text) formats
-    Must be named according to the corresponding time/age. e.g., for 100 Ma: 100.tif
+    Must be named according to the corresponding time/age.
+    e.g., for 100 Ma: 100.tif
 
     Point coordinates:
 
     Must be in .csv format
-    Each .csv file must correspond to a unique well/point with a time-varying location
-    Each .csv file must be named according to the well/point name. e.g., well_X.csv | X.csv | etc.
-    Each .csv file must contain at least 3 columns: 'Time (Ma)' | 'Lat' | 'Lon'
+    and the .csv files must:
+    1) Correspond to a unique well/point with a time-varying location
+    2) Be named according to the well/point name. e.g., well_X.csv | X.csv | etc.
+    3) Contain at least 3 columns: 'Time (Ma)' | 'Lat' | 'Lon'
     The column 'Time (Ma)' will be used to associate the correspondent coordinates to the raster of the same age.
 
-    PS: It is extremely recommended that both rasters and sampling points had been created using the same plate rotation model.
+    PS: It is extremely recommended that both rasters and sampling points had been created using the same plate
+    rotation model.
+
     PS2: It is not necessary to have all the rasters-equivalent ages in each point or vice-versa.
      '''
 
@@ -37,7 +42,8 @@ def z_from_tifs():
 
 
     # listing raster files paths and names
-    rasterPaths = list(fd.askopenfilenames(title='Select raster files', filetypes=[("raster", "*.tif")]))
+    rasterPaths = list(fd.askopenfilenames(title='Select raster files',
+                                      filetypes=[("raster", "*.tif")]))
     rasterNames = []
 
     for t in range(len(rasterPaths)):
@@ -45,7 +51,8 @@ def z_from_tifs():
         rasterNames.append(rasterFiles)
 
     # listing sampling point files paths and names
-    wellPaths = list(fd.askopenfilenames(title='Select sampling point files', filetypes=[("csv", "*.csv")]))
+    wellPaths = list(fd.askopenfilenames(title='Select point files',
+                                      filetypes=[("csv", "*.csv")]))
     wellNames = []
     for i in range(len(wellPaths)):
         wellFiles = os.path.basename(wellPaths[i])
@@ -59,7 +66,7 @@ def z_from_tifs():
         pts = pd.read_csv(wellPaths[w], encoding="ISO-8859-1")
         pts = pts[['Time (Ma)','Lat','Lon']]
 
-        # Creating a list of tuples containing each lat-lon pair of a csv file
+        # Creating a list of tuples of each lat-lon pair of a csv file
         coords = [(x,y) for x, y in zip(pts.Lon, pts.Lat)]
 
         # Sampling the point coordinates in the raster files
@@ -68,9 +75,10 @@ def z_from_tifs():
             age = os.path.basename(rasterPaths[t])
             age = int(age.replace(".tif",""))
 
-            pts['Paleobathimetry_from_Scotese (m)'] = [x[0] for x in map.sample(coords)]
+            pts['Paleobathimetry_from_Scotese (m)'] = \
+                [x[0] for x in map.sample(coords)]
 
-            # Matching the lines containing the corresponding ages from the points and raster files and appending to the final df
+            # Matching corresponding ages then appending to final df
             pts2 = pts.loc[pts['Time (Ma)'] == age]
             df = df.append(pts2)
             df.to_csv(outPath + rf'\{wellNames[w]}', index=False)
@@ -78,3 +86,4 @@ def z_from_tifs():
     return print(f'Process Finished. Files were saved to {outPath} ')
 
 z_from_tifs()
+
